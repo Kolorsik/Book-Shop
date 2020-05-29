@@ -1,0 +1,89 @@
+<h1>Книги</h1>
+<div style="width: 360px;">
+  <h3>Фильтры</h3>
+
+  <form action="/books" method="POST">
+  
+  <div class="input-field">
+          <input id="name" name="name" type="text" class="validate" {{#if back.title}} value="{{back.title}}" {{/if}}>
+          <label for="name">Название</label>
+    </div>
+
+    <div class="input-field">
+          <input id="author" name="author" type="text" class="validate" {{#if back.author}} value="{{back.author}}" {{/if}}>
+          <label for="author">Автор</label>
+    </div>
+
+    <div style="display: inline-block;" class="input-field">
+          <input id="price1" name="price1" type="number" class="validate" {{#if back.price1}} value="{{back.price1}}" {{/if}}>
+          <label for="price1">Цена</label>
+    </div>
+
+    <div style="display: inline-block;" class="input-field">
+          <input id="price2" name="price2" type="number" class="validate" {{#if back.price2}} value="{{back.price2}}" {{/if}}>
+          <label for="price2">Цена</label>
+    </div>
+
+    <div style="display: inline-block;" class="input-field">
+          <input id="rating1" name="rating1" type="number" class="validate" {{#if back.rating1}} value="{{back.rating1}}" {{/if}}>
+          <label for="rating1">Рейтинг</label>
+    </div>
+
+    <div style="display: inline-block;" class="input-field">
+          <input id="rating2" name="rating2" type="number" class="validate" {{#if back.rating2}} value="{{back.rating2}}" {{/if}}>
+          <label for="rating2">Рейтинг</label>
+    </div>
+
+    <div class="input-field col s12">
+      <select name="sort">
+        <option value="" disabled selected>Выберите сортировку</option>
+        <option value="prAsc">Цена (по возрастанию) </option>
+        <option value="prDesc">Цена (по убыванию)</option>
+        <option value="popAsc">Популярность (по возрастанию)</option>
+        <option value="popDesc">Популярность (по убыванию)</option>
+      </select>
+        <label>Выберите сортировку</label>
+  </div>
+
+      <button type="submit" class="btn btn-primary">Применить фильтры</button>
+
+    </form>
+
+</div>
+
+  <div class="row center-cols center-aling">
+
+{{#if books.length}}
+{{#each books}}
+    <div class="col m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{img}}" alt="{{title}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title">{{title}} ({{author}})</span>
+          <p class="price">{{price}}</p>
+        </div>
+        <div class="card-action actions">
+          <a href="/books/{{_id}}">Подробнее</a>
+          {{#if @root.isAuth}}
+
+          {{#if @root.isAdmin}}
+          {{#ifeq userId._id @root.userId}}
+          <a href="/books/{{_id}}/edit" target="_blank">Ред.</a>
+          {{/ifeq}}
+          {{/if}}
+
+          <form  action="/cart/add" method="post">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-primary">Купить</button>
+          </form>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+{{/each}}
+{{else}}
+<p>Книги не найдены!</p>
+{{/if}}
+</div>

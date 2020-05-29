@@ -1,0 +1,46 @@
+<h1>Редактировать книгу {{book.title}}</h1>
+
+{{#if error}}
+      <p class="alert">{{error}}</p>
+{{/if}}
+
+<form action="/books/edit" method="post" class="book-form">
+    <div class="input-field">
+          <input id="title" name="title" type="text" class="validate" required {{#if data}} value="{{data.title}}" {{else}} value="{{book.title}}" {{/if}}>
+          <label for="title">Название книги</label>
+          <span class="helper-text" data-error="Введите название книги"></span>
+    </div>
+
+    <div class="input-field">
+          <input id="author" name="author" type="text" class="validate" required {{#if data}} value="{{data.author}}" {{else}} value="{{book.author}}" {{/if}}>
+          <label for="author">Автор книги</label>
+          <span class="helper-text" data-error="Введите автора книги"></span>
+    </div>
+
+    <div class="input-field">
+          <input id="price" name="price" type="number" class="validate" required min="1" {{#if data}} value="{{data.price}}" {{else}} value="{{book.price}}" {{/if}}>
+          <label for="price">Цена</label>
+          <span class="helper-text" data-error="Введите цену книги"></span>
+    </div>
+
+    <div class="input-field">
+          <input id="img" name="img" type="text" class="validate" required {{#if data}} value="{{data.img}}" {{else}} value="{{book.img}}" {{/if}}>
+          <label for="img">Картинка</label>
+          <span class="helper-text" data-error="Введите ссылку на картинку"></span>
+    </div>
+
+    <div class="input-field">
+          <input id="desc" name="desc" type="text" class="validate" required {{#if data}} value="{{data.desc}}" {{else}} value="{{book.desc}}" {{/if}}>
+          <label for="desc">Описание книги</label>
+          <span class="helper-text" data-error="Введите описание книги"></span>
+    </div>
+
+    <input type="hidden" name="_id" {{#if data}}value="{{data.id}}" {{else}} value="{{book._id}}" {{/if}}>
+
+    <button type="submit" class="btn btn-primary">Изменить книгу</button>
+</form>
+
+<form action="/books/remove" method="post">
+      <input type="hidden" name="_id" {{#if data}}value="{{data.id}}" {{else}} value="{{book._id}}" {{/if}}>
+      <button class="btn red">Удалить книгу</button>
+</form>

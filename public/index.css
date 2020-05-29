@@ -1,0 +1,72 @@
+.nav-wrapper {
+    padding: 0 2rem;
+}
+
+.price {
+    font-size: 2rem;
+}
+
+.book {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book h1 {
+    margin-bottom: 2rem;
+}
+
+.book img {
+    max-width: 400px;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.book p {
+    margin-right: 30px;
+    text-align: justify;
+}
+
+.book .price.big {
+    font-size: 2.5rem;
+}
+
+.card-action.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-form {
+    margin-bottom: 2rem;
+}
+
+.auth {
+    padding-top: 1rem;
+}
+
+.alert {
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: rgba(255, 0, 0, .3);
+    color: red;
+}
+
+.avatar {
+    max-width: 300px;
+    height: auto;
+}
+
+.d-flex {
+    display: inline-flex;
+}
+
+.center-cols > .col {
+    float:none; /* disable the float */
+    display: inline-block; /* make blocks inline-block */
+    text-align: initial; /* restore text-align to default */
+  }

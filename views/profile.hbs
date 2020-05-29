@@ -1,0 +1,21 @@
+<h1>Профиль</h1>
+
+<div class="row">
+
+    <div class="col s6">
+        <form action="/profile" method="POST">
+
+            <p>Ваш email: <strong>{{user.email}}</strong></p>
+
+            <div class="input-field">
+                <input id="name" name="name" type="text" class="validate" required value="{{user.name}}">
+                <label for="name">Ваше имя</label>
+                <span class="helper-text" data-error="Имя не может быть пустым"></span>
+            </div>
+
+            <button type="submit" class="btn">Изменить</button>
+
+        </form>
+    </div>
+
+</div>
